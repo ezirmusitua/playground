@@ -20,7 +20,7 @@ def dump(sentences, _filename='example_result.md'):
     if _filename is not None:
         filename = _filename
     else:
-        filename = 'result_result.md'
+        filename = 'example_result.md'
     with codecs.open(filename, 'wb', 'utf-8') as file_to_write:
         for sentence in sentences:
             file_to_write.write(sentence + '\n')
