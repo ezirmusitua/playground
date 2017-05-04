@@ -14,7 +14,7 @@ def generate_sentences(args):
         target_name, target_words = target_section['name'], target_section['words']
         sentence_start = '- [ ] ' + u'我希望`' + target_name + u'`是'
         word_length = len(target_words)
-        for k in range(1, word_length):
+        for k in range(1, word_length + 1):
             concated_sentences.extend([
                 sentence_start + tmp + u'的. '
                 for tmp in all_combinations.concat_sentences_for_target(target_section, k)
