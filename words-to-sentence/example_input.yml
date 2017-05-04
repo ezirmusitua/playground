@@ -1,0 +1,27 @@
+-
+  name: 世界
+  words:
+    -
+      word: 和平
+      weight: 2
+    -
+      word: 美好
+      weight: 1
+    -
+      word: 爱满人间
+      weight: 1
+-
+  name: 社会
+  words:
+    -
+      word: 安宁
+      weight: 1
+-
+  name: 人类
+  words:
+    -
+      word: 不再无知
+      weight: 1
+    -
+      word: 不再愤怒
+      weight: 1
