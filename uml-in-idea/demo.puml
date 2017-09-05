@@ -1,0 +1,10 @@
+@startuml
+note "dependency relation" as Note1
+class Human {
+  void buy(cost, Something)
+}
+
+Human "1"  *--> "*" Car: buy >
+Human .. Note1
+Note1 .. Car
+@enduml

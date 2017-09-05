@@ -1,0 +1,115 @@
+@startuml
+Class01 <|-- Class02
+Class03 *--- "many" Class04: contains
+Class05 o--- "many" Class06: > contains
+
+ClassA : equals()
+ClassA : String[] names
+
+class ClassA {
+  String data
+  void methods()
+}
+
+class Human {
+  -sex
+  #character
+  +eat
+}
+
+class NewHuman {
+  {static}     language
+  {classifier} math
+  {abstract}   speak
+}
+class User {
+  .. Simple Getter ..
+  + getName()
+  + getAddress()
+  .. Some setter ..
+  + setName()
+  __ private data __
+  int age
+  -- encrypted --
+  String password
+}
+
+class Object << general >>
+Object <|--- ArrayList
+
+note top of Object : In java, every class\nextends this one.
+
+note "This is a floating note" as N1
+note "This note is connected\nto several objects." as N2
+Object .. N2
+N2 .. ArrayList
+
+class Foo
+note left: On last defined class
+
+class Dummy
+Dummy --> Foo : A link
+note on link #red: note that is red
+
+Dummy --> Foo2 : Another link
+note right on link #blue
+	this is my note on right link
+	and in blue
+end note
+
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|- List
+AbstractCollection <|- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList {
+  Object[] elementData
+  size()
+}
+
+enum TimeUnit {
+  DAYS
+  HOURS
+  MINUTES
+}
+
+annotation SuppressWarnings
+
+class "This is my class" as class1
+class class2 as "It works this way too"
+class2 *-- "foo/dummy" : use
+
+class Dummy1 {
+  +myMethods()
+}
+
+class Dummy2 {
+  +hiddenMethod()
+}
+
+class Dummy3 <<Serializable>> {
+	String name
+}
+
+hide members
+hide <<Serializable>> circle
+show Dummy1 methods
+show <<Serializable>> fields
+class Foo1
+class Foo2
+Foo2 *-- Foo1
+hide Foo2
+
+class Foo<? extends Element> {
+  int size()
+}
+Foo *- Element
+
+@enduml
