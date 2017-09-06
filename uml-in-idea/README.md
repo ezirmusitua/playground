@@ -1,20 +1,33 @@
-### Draw UML using pyCharm  
-#### Install GraphViz  
-```shell  
-sudo apt install graphViz  
-```  
-#### Install PlantUML plugin  
-1. Open setting in pyCharm  
-2. Open Plugins section  
-3. Search PlantUML in Plugins, search in repositories  
-4. Install and restart pyCharm  
+### 在 Idea 中编辑和查看 UML 图例  
+#### 安装和配置 PlantUML 插件
+##### 安装 graphViz
+```shell 
+sudo apt install graphViz   
+```  
+##### 在 Idea 中安装 PlantUML
+1. 打开设置
+2. 搜索 PlantUML(repositories) 中  
+3. 安装插件并重启 idea  
+#### 基本使用  
+新建 PlantUML 相关的文件, 开始使用  
 
-#### Does it work?  
-Create new file, type is `UML **`, give a random name  
-open de `**.puml` file, see the uml graph in the right side  
+### PlantUML 通用语法  
 
+#### 线和箭头  
 
-### 类图  
+#### skinparam 设置  
+
+#### creole 和 HTML 格式支持  
+
+#### 添加备注  
+
+#### 利用 newpage 分割图例  
+
+#### 利用 as 参数设置别名  
+
+#### 利用 autonumber 自动为消息编号  
+
+### 类图  
 #### dot/line  
 |dot|line|  
 |---|----|  
