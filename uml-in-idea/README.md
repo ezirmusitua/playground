@@ -2,65 +2,157 @@
 #### 安装和配置 PlantUML 插件
 ##### 安装 graphViz
 ```shell 
-sudo apt install graphViz   
-```  
+sudo apt install graphViz   
+```  
+
 ##### 在 Idea 中安装 PlantUML
 1. 打开设置
-2. 搜索 PlantUML(repositories) 中  
-3. 安装插件并重启 idea  
-#### 基本使用  
-新建 PlantUML 相关的文件, 开始使用  
+2. 搜索 PlantUML(repositories) 中  
+3. 安装插件并重启 idea  
+
+#### 基本使用  
+新建 PlantUML 相关的文件, 开始使用  
 
 ### PlantUML 通用语法  
-
+通用语法指的是那些在所有类型的 UML 图例中都可以使用的语法
 #### 线和箭头  
+线和箭头指的是图例中实例的关系  
+##### 线  
+线的作用是将实例连接起来  
+|dot lint|line|
+|--------|----|  
+|   ..   | -- |  
 
-#### skinparam 设置  
-
-#### creole 和 HTML 格式支持  
-
-#### 添加备注  
-
-#### 利用 newpage 分割图例  
-
-#### 利用 as 参数设置别名  
-
-#### 利用 autonumber 自动为消息编号  
-
-### 类图  
-#### dot/line  
-|dot|line|  
-|---|----|  
-|.. |\-\-|  
-
-#### relation  
+##### 箭头  
+箭头指的是线末端的样式, 可以代表实例间不同的关系  
 |association|extension|composition|aggregation|  
 |-----------|---------|-----------|-----------|  
 |<..........|<\|......|*..........|o----------|  
-改变方向:  
---/.. 垂直  
--/.   水平  
--left->  
--right->  
--up->  
--down->  
+
+##### 改变方向
+默认显示水平  
+改变为垂直方向: `--> => ->`(使用单破折号或者点)  
+另一种改变方向的方式:  
+|up     |right     |down     |left     |  
+|-------|----------|---------|---------|  
+| -up-> | -right-> | -down-> | -left-> |  
+
+##### 改变样式  
+语法: `-[#color, line_style]->`  
+
+#### skinparam 设置  
+使用 skinparam 改变字体和颜色  
+详细内容[参见](http://plantuml.com/skinparam)  
+
+##### 使用场景  
+* 图的定义中  
+* 包含进来的文件中  
+* 命令行/ANT 任务配置中  
+
+##### 使用语法  
+```  
+skinparam param value  
+```  
+或者  
+```  
+skinparam xxxx {
+  Param1 value1
+  Param2 value2
+  Param3 value3
+  Param4 value4
+}
+```  
+param 指的是要设置的样式, value 指设置的值  
+可以设置的 param [参见](http://plantuml.com/skinparam)  
+
+
+#### creole 和 HTML 格式支持  
+
+#### 添加备注  
+注释指的是在图例中的注释块, 关键词: note  
+备注中支持使用 creole wiki 和 HTML 语法  
+
+##### 设置注释显示位置  
+note + position + of  
+position: left, right, top, bottom, over    
+在类声明的末尾中使用可以省略 of, 如: 
+```  
+class Foo
+note left: On last defined class  
+```  
+
+##### 建立注释和图例中对象的联系  
+使用 ..\-- 即可  
+
+##### 设置注释颜色  
+note [keywords] #color: note text  
+
+##### 设置注释形状  
+hnote(hexagon note) & rnote(rectangle note)  
+
+##### 为链接建立注释  
+建立链接只之后使用 note on link   
+```
+A --> B  
+note on line #color: note that is red    
+```
+
+#### 利用 newpage 分割图例  
+newpage pageTitle  
+```  
+// page 1  
+newpage  
+// page 2  
+newpage Page 2
+// page 3    
+```  
+
+#### 利用 as 参数设置别名  
+something `as` something_alias  
+
+#### 利用 autonumber 自动为消息编号  
+autonumber [start increment] ["style"]  
+```  
+autonumber 40 10
+autonumber 40 10 "<font color=red><b>Message 0  "  
+```  
+停止计数: autonumber stop
+继续计数: autonumber resume [increment] ["style"]  
+
+#### 更改图例方向  
+默认从上到小  
+设置: left to right direction  
+
+#### 拆分文件  
+语法: page (hpages)x(vpages)  
+
+### 类图  
 
 #### 关系上的标识
 对元素的说明, 在每一边使用 "" 来说明:  
+```  
 ClassA -- "demo" ClassB  
+```  
 在关系之间使用标签来说明时, 使用 ":"后接`标签文字`:  
+```  
 ClassA <-- ClassB: Contains  
+```  
 在标签的开始或结束位置添加`<`或`>`表明对象作用关系上:  
+```  
 ClassA <-- ClassB: Contains <  
+```  
 
 #### 添加方法  
 为了声明域或者方法，你可以使用`后接域名`或`方法名`  
 系统检查是否有括号来判断是方法还是域  
+```  
 ClassA <-- ClassB  
 ClassA : equals()  
 ClassB : Object[] elementData  
 ClassB : size()  
+```  
 或者使用更像编程语言的方式  
+```  
 class ClassA {  
   String data  
   void methods()  
@@ -69,43 +161,29 @@ class ClassB {
    field1: Integer  
    field2: Date  
 }  
+```  
 
 #### 可访问性  
 |Character	|Visibility     |  
 |-----------|---------------|  
-|-			|private        |  
-|#			|protected      |  
-|~			|package private|  
-|+			|public         |  
-
-如  
-class ClassA {  
-  -sex  
-  -character  
-  +eat  
-}  
+|    -			|private        |  
+|    #			|protected      |  
+|    ~			|package private|  
+|    +			|public         |  
 
 #### 抽象和静态  
 通过修饰符{static}({classifier})或者{abstract}，可以定义静态或者抽象的方法或者属性  
 这些修饰符可以写在行的开始或者结束  
+```  
 class ClassA {  
   {static}     language  
   {abstract}   speak  
   {classifier} speak  
 }  
+```  
 
 #### 类体修饰符  
 `../__/--/== separator text ==/--/__/..`  
-
-#### 备注和模板  
-模板: `<< & >>`  
-注释: note [top of, ... as noteName, Class>left/right/top/bottom]  
-链接注释:  
-```  
-A LinkTo B  
-note on link #color: noteText  
-```  
-注释中可以使用 html tag  
 
 #### 抽象类和接口  
 关键字:  
@@ -113,9 +191,6 @@ note on link #color: noteText
 2. interface  
 3. annotation  
 4. enum  
-
-#### as 关键字  
-在类或者枚举的显示中使用非字母符号  
 
 #### 隐藏  
 使用命令`hide/show`可以用参数表示类的显示方式  
@@ -130,11 +205,6 @@ note on link #color: noteText
 state StateName {  
   // state transfer  
 }  
-```  
-
-#### 长名字  
-```  
-state "This is a very long state name" as ls1;  
 ```  
 
 #### 并发状态  
@@ -167,12 +237,6 @@ A -[lineColor]-> B: message
 4. 虚线箭头: 用 -- 替代 -  
 5. 箭头末尾加圈: ->o  
 6. 双向箭头: <->  
-
-#### 箭头自动编号  
-关键字: autonumber  
-```
-autonumber "<b>[000]"  
-```  
 
 #### 分组  
 1. alt/else  
@@ -288,8 +352,7 @@ Bob --> Alice: Authentication Response
 
 ### 活动图  
 活动标签以冒号开始, 以分号结束  
-文本格式支持`creole wiki`语法  
-活动默认安装它们定义的顺序就行连接  
+活动默认按照定义它们的顺序连接  
 ```
 colorOfActivity:ActivityText  
 -[#colorOfArrow,styleOfArrow]->  
@@ -315,7 +378,7 @@ endif
 ```  
 
 #### 循环  
-`repeat - repeat white(cond)`  
+`repeat - repeat white(cond)` & `while (cond) - endwhile`
 ```  
 repeat  
   // process  
@@ -327,7 +390,7 @@ endwhile
 ```  
 
 #### 并行处理  
-`fork`  
+`fork`   
 ```  
 fork  
   :Treatment 1;  
@@ -426,6 +489,10 @@ This allows large description."
 关键词: newpage  
 
 
+### 甘特图  
+目前还在 beta 中 ...  
+
+
 ### 组件图  
 不知道哪里会用到...  
 [Read Manual Here](http://plantuml.com/component-diagram)  
@@ -433,4 +500,3 @@ This allows large description."
 
 ### Reference    
 [PlantUML Official Site](http://plantuml.com)  
-
