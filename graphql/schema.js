@@ -8,12 +8,26 @@ let schema = new GraphQLSchema({
         fields: {
             count: {
                 type: GraphQLInt,
+                description: 'Fetch the count',
                 resolve: function () {
                     return count;
                 },
             },
         },
     }),
+    mutation: new GraphQLObjectType({
+        name: 'RootMutationType',
+        fields: {
+            updateCount: {
+                type: GraphQLInt,
+                description: 'Updates the count',
+                resolve: function () {
+                    count += 1;
+                    return count;
+                }
+            }
+        }
+    })
 });
 
 module.exports = schema;
