@@ -8,8 +8,11 @@
     "express": "^4.15.4",
     "graphql": "^0.11.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.12.0"
+  },
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
