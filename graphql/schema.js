@@ -1,4 +1,8 @@
-const { GraphQLObjectType, GraphQLSchema, GraphQLInt, GraphQLString, GraphQLList } = require('graphql');
+const { GraphQLObjectType, GraphQLSchema, GraphQLInt, GraphQLString, GraphQLList, GraphQLNonNull } = require('graphql');
+
+const MockUsers = {
+    'jferroal': { name: 'jferroal', caught: [], created: 0 },
+};
 
 let count = 0;
 
@@ -7,7 +11,7 @@ const PokemonType = new GraphQLObjectType({
     description: 'A Pokemon',
     fields: () => ({
         name: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: 'Name of pokemon',
         },
         type: {
@@ -15,14 +19,34 @@ const PokemonType = new GraphQLObjectType({
             description: 'Type of pokemon',
         },
         stage: {
-            type: GraphQLInt, 
+            type: GraphQLInt,
             description: 'Level of pokemon',
         },
         species: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: 'Species of pokemon',
         },
-    })
+    }),
+});
+
+
+const UserType = new GraphQLObjectType({
+    name: 'User',
+    description: 'An User',
+    fields: () => ({
+        name: {
+            type: GraphQLString,
+            description: 'Name of user',
+        },
+        caught: {
+            type: new GraphQLList(GraphQLString),
+            description: 'The pokemon has been caught by current user',
+        },
+        created: {
+            type: GraphQLInt,
+            description: 'when the create',
+        },
+    }),
 });
 
 
@@ -40,7 +64,19 @@ const DemoSchema = new GraphQLSchema({
             pokemon: {
                 type: new GraphQLList(PokemonType),
                 resolve: () => [],
-            }
+            },
+            user: {
+                type: UserType,
+                args: {
+                    name: {
+                        description: 'Name of user',
+                        type: new GraphQLNonNull(GraphQLString),
+                    },
+                },
+                resolve: (root, { name }) => {
+                    return Promise.resolve(MockUsers[ name ]);
+                },
+            },
         },
     }),
     mutation: new GraphQLObjectType({
@@ -58,4 +94,4 @@ const DemoSchema = new GraphQLSchema({
     }),
 });
 
-module.exports = {DemoSchema};
+module.exports = { DemoSchema };
