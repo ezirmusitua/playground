@@ -57,7 +57,7 @@ const DemoSchema = new GraphQLSchema({
             count: {
                 type: GraphQLInt,
                 description: 'Fetch the count',
-                resolve: function () {
+                resolve: () => {
                     return count;
                 },
             },
@@ -85,11 +85,47 @@ const DemoSchema = new GraphQLSchema({
             updateCount: {
                 type: GraphQLInt,
                 description: 'Updates the count',
-                resolve: function () {
+                resolve: () => {
                     count += 1;
                     return count;
                 },
             },
+            upsertUser: {
+                type: UserType,
+                args: {
+                    name: {
+                        description: 'name of the user',
+                        type: new GraphQLNonNull(GraphQLString),
+                    },
+                },
+                resolve: (obj, {name}) => {
+                    let user = MockUsers[name];
+                    if (!user) {
+                        user = MockUsers[name] = {name, caught: [], created: count};
+                    }
+                    return Promise.resolve(user);
+                }
+            },
+            caughtPokemon: {
+                type: UserType,
+                args: {
+                    name: {
+                        description: 'name of user',
+                        type: new GraphQLNonNull(GraphQLString),
+                    },
+                    pokemon: {
+                        description: 'name of pokemon',
+                        type: new GraphQLNonNull(GraphQLString),
+                    }
+                },
+                resolve: (obj, {name, pokemon}) => {
+                    const user = MockUsers[name];
+                    // TODO: 抛出异常?
+                    if (!user) return Promise.resolve();
+                    (user.caught.indexOf(pokemon) < 0) && user.caught.push(pokemon);
+                    return user;
+                }
+            }
         },
     }),
 });
