@@ -2,7 +2,7 @@ const express = require('express');
 const graphql = require('graphql').graphql;
 const bodyParser = require('body-parser');
 
-const schema = require('./schema');
+const {DemoSchema} = require('./schema');
 
 // === constants
 const PORT = 3002;
@@ -16,7 +16,7 @@ app.use(bodyParser.text({ type: 'application/graphql' }));
 
 // === routes
 app.post('/graphql', (req, res) => {
-    graphql(schema, req.body).then((query) => {
+    graphql(DemoSchema, req.body).then((query) => {
         res.send(JSON.stringify(query, null, null));
     });
 });

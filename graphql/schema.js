@@ -1,8 +1,32 @@
-const { GraphQLObjectType, GraphQLSchema, GraphQLInt } = require('graphql');
+const { GraphQLObjectType, GraphQLSchema, GraphQLInt, GraphQLString, GraphQLList } = require('graphql');
 
 let count = 0;
 
-let schema = new GraphQLSchema({
+const PokemonType = new GraphQLObjectType({
+    name: 'Pokemon',
+    description: 'A Pokemon',
+    fields: () => ({
+        name: {
+            type: GraphQLString, 
+            description: 'Name of pokemon',
+        },
+        type: {
+            type: GraphQLInt,
+            description: 'Type of pokemon',
+        },
+        stage: {
+            type: GraphQLInt, 
+            description: 'Level of pokemon',
+        },
+        species: {
+            type: GraphQLString, 
+            description: 'Species of pokemon',
+        },
+    })
+});
+
+
+const DemoSchema = new GraphQLSchema({
     query: new GraphQLObjectType({
         name: 'RootQueryType',
         fields: {
@@ -13,6 +37,10 @@ let schema = new GraphQLSchema({
                     return count;
                 },
             },
+            pokemon: {
+                type: new GraphQLList(PokemonType),
+                resolve: () => [],
+            }
         },
     }),
     mutation: new GraphQLObjectType({
@@ -24,10 +52,10 @@ let schema = new GraphQLSchema({
                 resolve: function () {
                     count += 1;
                     return count;
-                }
-            }
-        }
-    })
+                },
+            },
+        },
+    }),
 });
 
-module.exports = schema;
+module.exports = {DemoSchema};
