@@ -1,4 +1,4 @@
-### Create simple graphql server with express  
+### GraphQL Demo server with express    
 用 Express 搭建的一个简单的 GraphQL 服务器  
 
 #### 使用  
