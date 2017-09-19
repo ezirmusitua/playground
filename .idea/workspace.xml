@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e7e262a-d9b8-4cba-9e5c-ff7e891eca85" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../proxy-with-node/connect.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../../proxy-with-node/normal.js" afterPath="$PROJECT_DIR$/../../proxy-with-node/request.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../graphql/front/src/Client.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../proxy-with-node/README.md" afterPath="$PROJECT_DIR$/../../proxy-with-node/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../graphql/front/src/App.js" afterPath="$PROJECT_DIR$/../../graphql/front/src/App.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../graphql/server/README.md" afterPath="$PROJECT_DIR$/../../graphql/server/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../graphql/server/index.js" afterPath="$PROJECT_DIR$/../../graphql/server/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../graphql/server/package.json" afterPath="$PROJECT_DIR$/../../graphql/server/package.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,7 +17,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="22329" />
+    <option name="totalTimeSeconds" value="22393" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -35,7 +37,7 @@
         <entry file="file://$PROJECT_DIR$/../../proxy-with-node/connect.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="286">
-              <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+              <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -44,8 +46,8 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../../proxy-with-node/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+            <state relative-caret-position="182">
+              <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -447,15 +449,15 @@
     <entry file="file://$PROJECT_DIR$/../../proxy-with-node/connect.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
-          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+          <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../proxy-with-node/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        <state relative-caret-position="182">
+          <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
           <folding />
         </state>
       </provider>

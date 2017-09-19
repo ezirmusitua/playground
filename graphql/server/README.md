@@ -15,8 +15,8 @@ curl -XPOST -H 'Content-Type:application/graphql' -d '{__schema { queryType { na
 curl -XPOST -H 'Content-Type:application/graphql' -d 'mutation RootMutationType { updateCount }' http://localhost:3002/graphql
 curl -XPOST -H 'Content-Type:application/graphql' -d '{ pokemon { name } }' http://localhost:3000/graphql  
 curl -XPOST -H 'Content-Type:application/graphql' -d '{ user(name: "jferroal") { name, caught, created } }' http://localhost:3002/graphql  
-curl -XPOST -H 'Content-Type:application/graphql' -d 'mutation M { upsertUser(name: "newUser") { name, caught, created } }' http://localhost:3002/graphql
-curl -XPOST -H 'Content-Type:application/graphql' -d 'mutation M { caughtPokemon(name: "newUser" pokemon: "Snorlax") { name, caught, created } }' http://localhost:3002/graphql
+curl -XPOST -H 'Content-Type:application/graphql' -d 'mutation { upsertUser(name: "newUser") { name, caught, created } }' http://localhost:3002/graphql
+curl -XPOST -H 'Content-Type:application/graphql' -d 'mutation { caughtPokemon(name: "newUser", pokemon: "Snorlax") { name, caught, created } }' http://localhost:3002/graphql
 ``` 
 
 

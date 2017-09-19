@@ -1,18 +1,25 @@
 import React, {Component} from 'react';
-import './App.css';
+import {counter, query, user, client} from './Client';
 
 class Counter extends Component {
     componentWillMount () {
-        const { count } = this.props;
-        this.setState({ count: count || 0 })
+        this.syncCount();
     }
 
     updateCount () {
         // TODO: call update count API, and use return value as new state.count
+        
     }
 
     syncCount () {
         // TODO: Sync count with get count API
+        client.request('', query(
+          counter(),
+        )).then(function (res) {
+            this.setState({ count: res.data.count });
+        }).catch(err => {
+            console.error(err);
+        });
     }
 
     render () {
@@ -68,19 +75,6 @@ class User extends Component {
 
 class Pokemon extends Component {
     componentWillMount () {
-        `Pokédex data
-National №	001
-Type	GRASS POISON
-Species	Seed Pokémon
-Height	2′4″ (0.71m)
-Weight	15.2 lbs (6.9 kg)
-Abilities	Overgrow
-Chlorophyll (hidden ability)
-Local №	001 (Red/Blue/Yellow/FireRed/LeafGreen)
-226 (Gold/Silver/Crystal)
-231 (HeartGold/SoulSilver)
-080 (X/Y)
-Japanese	Fushigidane`
     }
 
     render () {
