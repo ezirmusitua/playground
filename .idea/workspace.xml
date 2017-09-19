@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e7e262a-d9b8-4cba-9e5c-ff7e891eca85" name="Default" comment="Add basic display UI">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../.idea/jsLibraryMappings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../proxy-with-node/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../proxy-with-node/normal.js" />
+    <list default="true" id="5e7e262a-d9b8-4cba-9e5c-ff7e891eca85" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../proxy-with-node/connect.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../proxy-with-node/normal.js" afterPath="$PROJECT_DIR$/../../proxy-with-node/request.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../proxy-with-node/README.md" afterPath="$PROJECT_DIR$/../../proxy-with-node/README.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,27 +15,37 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="21731" />
+    <option name="totalTimeSeconds" value="22329" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="normal.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../../proxy-with-node/normal.js">
+      <file leaf-file-name="request.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../proxy-with-node/request.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="15" column="4" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+            <state relative-caret-position="650">
+              <caret line="25" column="1" lean-forward="false" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="connect.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../proxy-with-node/connect.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../../proxy-with-node/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+            <state relative-caret-position="234">
+              <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -89,8 +99,9 @@
         <option value="$USER_HOME$/graphql/front/src/App.js" />
         <option value="$USER_HOME$/graphql/server/README.md" />
         <option value="$USER_HOME$/graphql/front/src/Client.js" />
-        <option value="$PROJECT_DIR$/../../proxy-with-node/README.md" />
         <option value="$PROJECT_DIR$/../../proxy-with-node/normal.js" />
+        <option value="$PROJECT_DIR$/../../proxy-with-node/connect.js" />
+        <option value="$PROJECT_DIR$/../../proxy-with-node/README.md" />
       </list>
     </option>
   </component>
@@ -267,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1505047517480</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Add normal proxy demp">
+      <created>1505811890218</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1505811890218</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -375,7 +393,8 @@
     <MESSAGE value="Update graphql project structure" />
     <MESSAGE value="Init front react app" />
     <MESSAGE value="Add basic display UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add basic display UI" />
+    <MESSAGE value="Add normal proxy demp" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add normal proxy demp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -417,18 +436,26 @@
     <entry file="file://$USER_HOME$/graphql/server/index.js" />
     <entry file="file://$USER_HOME$/graphql/server/schema.js" />
     <entry file="file://$USER_HOME$/graphql/front/src/Client.js" />
-    <entry file="file://$PROJECT_DIR$/../../proxy-with-node/README.md">
+    <entry file="file://$PROJECT_DIR$/../../proxy-with-node/request.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+        <state relative-caret-position="650">
+          <caret line="25" column="1" lean-forward="false" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../proxy-with-node/normal.js">
+    <entry file="file://$PROJECT_DIR$/../../proxy-with-node/connect.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="15" column="4" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+        <state relative-caret-position="286">
+          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../proxy-with-node/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
           <folding />
         </state>
       </provider>
