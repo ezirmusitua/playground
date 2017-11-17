@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e7e262a-d9b8-4cba-9e5c-ff7e891eca85" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../python.asyncio/streams.print-http-headers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../python.asyncio/streams.tcp-echo-client.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../python.asyncio/streams.tcp-echo-server.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../python.asyncio/subprocess.streams.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../python.asyncio/subprocess.transport-and-protocol.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.idea/workspace.xml" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,22 +14,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="30194" />
+    <option name="totalTimeSeconds" value="30471" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="task-coroutine.chain-coroutines.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python.asyncio/task-coroutine.chain-coroutines.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="task-coroutine.factorial.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../python.asyncio/task-coroutine.factorial.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -81,13 +70,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="streams.print-http-headers.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="streams.print-http-headers.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../python.asyncio/streams.print-http-headers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state relative-caret-position="338">
+              <caret line="29" column="4" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
               <folding>
                 <element signature="e#25#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="subprocess.transport-and-protocol.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../python.asyncio/subprocess.transport-and-protocol.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding>
+                <element signature="e#25#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="subprocess.streams.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../python.asyncio/subprocess.streams.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="364">
+              <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+              <folding>
+                <element signature="e#24#49#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,16 +121,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-115">
               <caret line="17" column="41" lean-forward="false" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="task-coroutine.slow-operation-till-complete.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python.asyncio/task-coroutine.slow-operation-till-complete.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -156,7 +159,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="/uml-in-idea/README.md" />
         <option value="/uml-in-idea/class.puml" />
         <option value="/uml-in-idea/demo.puml" />
         <option value="$USER_HOME$/uml-in-idea/package_namespace.puml" />
@@ -206,6 +208,8 @@
         <option value="$PROJECT_DIR$/../python.asyncio/streams.tcp-echo-client.py" />
         <option value="$PROJECT_DIR$/../python.asyncio/streams.tcp-echo-server.py" />
         <option value="$PROJECT_DIR$/../python.asyncio/streams.print-http-headers.py" />
+        <option value="$PROJECT_DIR$/../python.asyncio/subprocess.transport-and-protocol.py" />
+        <option value="$PROJECT_DIR$/../python.asyncio/subprocess.streams.py" />
       </list>
     </option>
   </component>
@@ -417,7 +421,14 @@
       <option name="project" value="LOCAL" />
       <updated>1510888861595</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Try asyncio.Streams example">
+      <created>1510889291795</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1510889291795</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -529,15 +540,14 @@
     <MESSAGE value="Try asyncio.BaseEventLoop example" />
     <MESSAGE value="Try asyncio.TaskAndCoroutine example" />
     <MESSAGE value="Try asyncio.Protocol example" />
-    <option name="LAST_COMMIT_MESSAGE" value="Try asyncio.Protocol example" />
+    <MESSAGE value="Try asyncio.Streams example" />
+    <option name="LAST_COMMIT_MESSAGE" value="Try asyncio.Streams example" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/graphql/node_modules/body-parser/lib/read.js" />
-    <entry file="file://$USER_HOME$/graphql/package.json" />
     <entry file="file://$USER_HOME$/graphql/node_modules/express/lib/express.js" />
     <entry file="file://$USER_HOME$/graphql/node_modules/express/index.js" />
     <entry file="file://$USER_HOME$/graphql/index.js" />
@@ -729,10 +739,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../python.asyncio/streams.print-http-headers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state relative-caret-position="338">
+          <caret line="29" column="4" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python.asyncio/subprocess.transport-and-protocol.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="e#25#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python.asyncio/subprocess.streams.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <folding>
+            <element signature="e#24#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
