@@ -23,4 +23,7 @@ Demo of tesseract in python
 Use python to implement union of set, just a toy  
 
 ### tools.idea-plant-uml  
-Try the plantUML plugin in idea, and exercise for uml drawing
+Try the plantUML plugin in idea, and exercise for uml drawing  
+
+### python.http.server  
+Learn to user python stand library: http.server in py3.6  
