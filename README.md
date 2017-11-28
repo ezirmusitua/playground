@@ -28,3 +28,6 @@ Try the plantUML plugin in idea, and exercise for uml drawing
 ### python.http.server  
 Learn to user python stand library: http.server in py3.6 
 Include an more flexible HttpServer(encapsulation of original http server) 
+
+### python.metaclass
+What is metaclass in python and how to use it 
