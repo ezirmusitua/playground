@@ -31,3 +31,6 @@ Include an more flexible HttpServer(encapsulation of original http server)
 
 ### python.metaclass
 What is metaclass in python and how to use it 
+
+### python.new-init-del  
+Exercise for _\_new_\_, _\_init_\_, _\_del_\_ of python, first try of juypter notebook
