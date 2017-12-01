@@ -34,3 +34,6 @@ What is metaclass in python and how to use it
 
 ### python.new-init-del  
 Exercise for _\_new_\_, _\_init_\_, _\_del_\_ of python, first try of juypter notebook
+
+### python.import   
+Try the import of relative import in the same package
