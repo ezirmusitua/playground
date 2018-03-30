@@ -7,8 +7,7 @@ Pandora.js 的基本使用
 提供了标准的 Node 应用 DevOps 流程  
 
 ### 目标  
- - [ ] Pandora 的基本配置和使用  
- - [ ] Pandora Dashboard 的基本使用  
+ - [ ] Pandora 的基本配置和使用
 
 ### pandora 基本使用  
 ```bash  
@@ -32,5 +31,5 @@ pandora dev ./demo-proj --name demo --env="NODE_ENV=production"
 # restart app
 pandora restart demo  
 pandora exit  
-```  
+```
 

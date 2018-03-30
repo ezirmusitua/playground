@@ -2,14 +2,14 @@
 
 module.exports = (pandora) => {
 
-  pandora
-    .fork('demo', './app.js');
+  // pandora
+  //   .fork('pandora-demo', './index.js');
 
   /**
    * you can also use cluster mode to start application
    */
-  // pandora
-  //   .cluster('./.\app.js');
+  pandora
+    .cluster('./index.js');
 
   /**
    * you can create another process here
@@ -22,5 +22,4 @@ module.exports = (pandora) => {
    * more features please visit our document.
    * https://github.com/midwayjs/pandora/
    */
-
 };

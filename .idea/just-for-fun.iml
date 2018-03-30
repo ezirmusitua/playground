@@ -20,6 +20,11 @@
       <sourceFolder url="file://$MODULE_DIR$/python.tesseract-tutorial" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/python.union-of-set" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tools.idea-plant-uml" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node.pandora" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node.pandora/demo-proj" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node.graphql/server" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node.graphql/front" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/javascript.iterator-generator/try-co" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/javascript.iterator-generator/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/python.tesseract-tutorial/.idea" />
@@ -28,12 +33,11 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="PyBDDFrameworkConfig">
+    <option name="preferedFrameworkName" value="behave" />
+  </component>
   <component name="TemplatesService">
-    <option name="TEMPLATE_FOLDERS">
-      <list>
-        <option value="$MODULE_DIR$/node.graphql/front/node_modules/istanbul-reports/lib/html/templates" />
-      </list>
-    </option>
+    <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="Unittests" />
