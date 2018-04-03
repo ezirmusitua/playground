@@ -9,18 +9,17 @@ function startProcess(command, args) {
 
 function listenEvent(proc) {
   proc.stderr.on('data', (data) => {
-    console.log(data.toString());
+    console.log(`\tSTDERR: ${data.toString()}`);
   });
-  proc.on('disconnect', () => {
-    console.log('process stopped gracefully');
+  proc.stdout.on('data', (data) => {
+    console.log(`\tSTDOUT: ${data.toString()}`);
   });
   proc.on('close', () => {
-    console.log('process stopped');
+    console.log('\tProcess stopped');
   });
 }
 
 function stopProcess(proc) {
-  console.log('Kill Process With Signal SIGTERM');
   proc.kill('SIGTERM')
 }
 
@@ -49,7 +48,7 @@ function loopSchedule(when, what) {
     what();
     if (interval) {
       iTimer = setInterval(() => {
-        console.log('run in interval: ', interval);
+        console.log('\trun in interval: ', interval);
         what();
       }, interval)
     }
@@ -60,7 +59,7 @@ function loopSchedule(when, what) {
       clearTimeoutTimer(tTimer);
       if (interval) {
         iTimer = setInterval(() => {
-          console.log('run in interval: ', interval);
+          console.log('\trun in interval: ', interval);
           what();
         }, interval)
       }
@@ -75,10 +74,10 @@ function main() {
   // first stop at 19:30:00, next is 19:40:00
   // work 10 5 minutes, rest for 5 minutes
 
-  loopSchedule({hours: 19, minutes: 36, seconds: 0, interval: 10 * 1000}, () => {
-    command = startProcess('./runforever.sh')
+  loopSchedule({hours: 19, minutes: 36, seconds: 50, interval: 10 * 1000}, () => {
+    command = startProcess('ls')
   });
-  loopSchedule({hours: 19, minutes: 36, seconds: 30, interval: 10 * 1000}, () => stopProcess(command));
+  loopSchedule({hours: 19, minutes: 37, seconds: 10, interval: 10 * 1000}, () => stopProcess(command));
 }
 
 main();
