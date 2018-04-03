@@ -25,12 +25,13 @@
       <sourceFolder url="file://$MODULE_DIR$/node.graphql/server" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/node.graphql/front" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/javascript.iterator-generator/try-co" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/python.attrs" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/javascript.iterator-generator/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/python.tesseract-tutorial/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/python.union-of-set/.vscode" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.6" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyBDDFrameworkConfig">
