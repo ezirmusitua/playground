@@ -4,14 +4,16 @@ import AngularAria from 'angular-aria'
 import AngularAnimate from 'angular-animate'
 import AngularMaterial from 'angular-material'
 
+import {todoService} from './services'
+
 angular.module('angular-webpack4', [
   AngularAria,
   AngularAnimate,
-  AngularMaterial
-]).
-  component('app', AppComponent).
+  AngularMaterial,
+  todoService
+]).component('app', AppComponent).
   run(() => {
-    console.log('Running')
+    console.log('App Running')
   })
 angular.element(document).ready(() => {
   angular.bootstrap(document, ['angular-webpack4'])
