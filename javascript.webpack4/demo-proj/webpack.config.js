@@ -7,6 +7,7 @@ const isDev = process.env.NODE_ENV !== 'production'
 console.log()
 module.exports = {
   entry: {
+    resource: './src/resource.js',
     logger: './src/logger.js',
     app: './src/index.js'
   },
