@@ -6,9 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const isDev = process.env.NODE_ENV !== 'production'
 module.exports = {
   entry: {
-    resource: './src/resource.js',
-    logger: './src/logger.js',
-    app: './src/index.js'
+    app: './app/app.js'
   },
   module: {
     rules: [
@@ -62,7 +60,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'app/index.html',
       filename: 'index.html'
     }),
     new MiniCssExtractPlugin({
