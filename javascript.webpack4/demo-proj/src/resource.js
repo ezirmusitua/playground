@@ -7,9 +7,9 @@ export const Resource = {
 
 ## Zero Configuration
 
-default entry: \'src/index.js\'，overriding with: webpack entry 
+default entry: \`src/index.js\`，overriding with: webpack entry 
 
-default output: \'dist/main.js\'，overriding with: webpack —output output
+default output: \`dist/main.js\`，overriding with: webpack —output output
 
 development mode: optimized for speed and does nothing more than providing an un-minified bundle
 

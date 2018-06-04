@@ -13,7 +13,36 @@ default output: `dist/main.js`，overriding with: webpack —output output
 development mode: optimized for speed and does nothing more than providing an un-minified bundle
 
 production mode: enables all sorts of optimizations out of the box. Including minification, scope hoisting, tree-shaking and more
+## Eslint Loader
 
+** Make sure eslint loader is use before babel **
+
+```
+    # install eslint related
+    npm i -D eslint eslint-loader
+    # update webpack config
+    ## vim webpack.config.js
+    // ...
+    module.exports = {
+    	// ...
+    	module: {
+    		// ...
+    		rules: [
+    			{
+    				enforce: 'pre',
+    				test: /\.js$/,
+    				use: {loader: 'eslint-loader'}
+    				options: {
+    					fix: true,
+    					emitError: true
+    				}
+    			}
+    		]
+    		// ...
+    	}
+    	// ...
+    }
+```
 ## Babel Loader
 
 ```

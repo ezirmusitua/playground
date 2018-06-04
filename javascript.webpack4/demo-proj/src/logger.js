@@ -4,7 +4,7 @@ export class Logger {
   }
 
   info(...msgs) {
-    console.log(this.name + ' - [INFO]', ...msgs)
+    console.info(this.name + ' - [INFO]', ...msgs)
   }
 }
 
