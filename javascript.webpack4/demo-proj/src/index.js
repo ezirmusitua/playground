@@ -1,4 +1,4 @@
-import './main.css'
+import './main.scss'
 import 'github-markdown-css/github-markdown.css'
 import {Resource} from './resource'
 import MarkdownIt from 'markdown-it'
