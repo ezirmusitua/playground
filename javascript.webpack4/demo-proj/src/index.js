@@ -2,6 +2,8 @@ import './main.scss'
 import 'github-markdown-css/github-markdown.css'
 import {Resource} from './resource'
 import MarkdownIt from 'markdown-it'
+import {GlobalLogger} from './logger'
+
 
 window.renderMD = () => {
   const markdown = MarkdownIt()
@@ -12,6 +14,7 @@ window.renderMD = () => {
   mdContainer.setAttribute('id', 'content')
   mdContainer.innerHTML = markdownRaw
   body.appendChild(mdContainer)
+  GlobalLogger.info('Markdown Content Appended!')
 }
 
 

@@ -1,11 +1,15 @@
-const path = require('path')
+// const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const isDev = process.env.NODE_ENV !== 'production'
 console.log()
 module.exports = {
+  entry: {
+    logger: './src/logger.js',
+    app: './src/index.js'
+  },
   module: {
     rules: [
       {
@@ -44,6 +48,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       filename: 'index.html'
