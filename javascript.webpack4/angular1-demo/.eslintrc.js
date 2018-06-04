@@ -56,7 +56,6 @@ module.exports = {
     "func-call-spacing": "error",
     "func-name-matching": "error",
     "func-names": "error",
-    "func-style": "error",
     "function-paren-newline": "error",
     "generator-star-spacing": "error",
     "getter-return": "error",
@@ -108,7 +107,6 @@ module.exports = {
     ],
     "newline-before-return": "error",
     "newline-per-chained-call": "error",
-    "no-alert": "error",
     "no-array-constructor": "error",
     "no-await-in-loop": "error",
     "no-bitwise": "error",
@@ -229,7 +227,6 @@ module.exports = {
     ],
     "radix": "error",
     "require-await": "error",
-    "require-jsdoc": "error",
     "rest-spread-spacing": [
       "error",
       "never"
