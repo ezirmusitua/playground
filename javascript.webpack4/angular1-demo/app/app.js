@@ -1,3 +1,4 @@
+import 'animate.css/animate.css'
 import 'angular-material/angular-material.scss'
 import './app.scss'
 

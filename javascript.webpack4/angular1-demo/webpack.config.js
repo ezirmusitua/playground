@@ -29,15 +29,6 @@ module.exports = {
         use: {loader: 'babel-loader'}
       },
       {
-        test: /assets\/.*\.(jpg|png)$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: 'assets/[name].[hash].[ext]',
-          },
-        },
-      },
-      {
         test: /\.html$/,
         use: [
           {
