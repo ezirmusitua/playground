@@ -27,10 +27,20 @@ angular.module('angular-webpack4', [
   $urlRouterProvider.otherwise('/')
   $stateProvider.state('todos', {
     url: '/',
-    template: '<todo-list></todo-list>'
+    component: 'todoList'
   }).state('todo', {
     url: '/todo/:todoId',
-    template: '<todo-view></todo-view>'
+    component: 'todoView',
+    resolve: {
+      todo () {
+        console.log('run in resolve');
+
+        return {
+          name: 'Hello World',
+          done: false
+        }
+      }
+    }
   })
 }).
   component('app', AppComponent).

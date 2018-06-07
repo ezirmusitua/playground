@@ -6,8 +6,12 @@ export const TodoList = {
   controllerAs: 'vm',
   template,
   controller: class {
-    constructor() {
+    constructor($transitions) {
       console.log('Page: Todo List')
+      console.log($transitions)
+      $transitions.onStart({to: 'todos'}, function (trans) {
+        console.log(trans)
+      })
     }
   }
 }
