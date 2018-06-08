@@ -8,9 +8,8 @@ export const TodoList = {
   controller: class {
     constructor($transitions) {
       console.log('Page: Todo List')
-      console.log($transitions)
-      $transitions.onStart({to: 'todos'}, function (trans) {
-        console.log(trans)
+      $transitions.onSuccess({to: 'todo'}, function (trans) {
+        console.log(trans.from(), ' -> ', trans.to())
       })
     }
   }

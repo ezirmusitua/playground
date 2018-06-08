@@ -1,7 +1,3 @@
-import 'animate.css/animate.css'
-import 'angular-material/angular-material.scss'
-import './app.scss'
-
 import {AppComponent} from './app.component'
 import angular from 'angular'
 import AngularAria from 'angular-aria'
@@ -32,8 +28,8 @@ angular.module('angular-webpack4', [
     url: '/todo/:todoId',
     component: 'todoView',
     resolve: {
-      todo () {
-        console.log('run in resolve');
+      todo() {
+        console.log('run in resolve')
 
         return {
           name: 'Hello World',

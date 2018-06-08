@@ -7,7 +7,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const isDev = process.env.NODE_ENV !== 'production'
 module.exports = {
   entry: {
-    app: './app/app.js'
+    app: './app/app.js',
+    styles: './app/app.scss'
   },
   module: {
     rules: [
