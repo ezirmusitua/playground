@@ -3,12 +3,11 @@ import Link from 'gatsby-link'
 
 export default class Header extends React.Component {
   constructor() {
-    console.log(Header);
     super()
   }
 
   render() {
-    const {props: {siteTitle}} = this
+    const {props: {title}} = this
     return (<div
       style={{
         background: 'rebeccapurple',
@@ -27,7 +26,7 @@ export default class Header extends React.Component {
               color: 'white',
               textDecoration: 'none',
             }}>
-            {siteTitle}
+            {title}
           </Link>
         </h1>
       </div>

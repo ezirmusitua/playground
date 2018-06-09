@@ -26,6 +26,12 @@
       <sourceFolder url="file://$MODULE_DIR$/node.graphql/front" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/javascript.iterator-generator/try-co" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/python.attrs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/javascript.webpack4" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/javascript.gatsby" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/python.DataVisualization" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/python.pandas" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/python.scikit-learn" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node.command-scheduler" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/javascript.iterator-generator/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/python.tesseract-tutorial/.idea" />
