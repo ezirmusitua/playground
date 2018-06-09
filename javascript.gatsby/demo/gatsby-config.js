@@ -7,7 +7,7 @@ module.exports = {
       name: 'keywords', content: 'sample, something'
     }],
     navs: [{
-      to: '/posts', name: 'Blog Post List'
+      to: '/', name: 'Blog Post List'
     }, {
       to: '/counter', name: 'Counter'
     }, {
