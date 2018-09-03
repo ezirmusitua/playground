@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b591dd7cceb04a6e4d088d83bc3843a083771366d989f46b3e1e01a63c1bcca3"
+            "sha256": "06c14c2b5761e56b1ed78142b328c8cd8810f1b470bca7f6f3a3fe8933dca4e2"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -38,6 +38,14 @@
             "index": "pypi",
             "version": "==3.5.3"
         },
+        "attrs": {
+            "hashes": [
+                "sha256:4b90b09eeeb9b88c35bc642cbac057e45a5fd85367b985bd2809c62b7b939265",
+                "sha256:e0d0eb91441a3b53dab4d9b743eafc1ac44476296a2053b6ca3af0b139faf87b"
+            ],
+            "index": "pypi",
+            "version": "==18.1.0"
+        },
         "httptools": {
             "hashes": [
                 "sha256:04c7703bbef0e8ca28b09811547352b8c7c20549eab70dc24e536bb24fd2b7c5"
@@ -59,22 +67,6 @@
             "index": "pypi",
             "version": "==0.7.0"
         },
-        "sanic-cors": {
-            "hashes": [
-                "sha256:1b526d5fd10d8fe75fffddd32c9e16735c4587ce841872fc10b8b44c14ae2476",
-                "sha256:aaa14b11dd02d18c4f47d29602b79f15f65d71cb59badb215914bfae3579f243"
-            ],
-            "index": "pypi",
-            "version": "==0.9.4"
-        },
-        "sanic-plugins-framework": {
-            "hashes": [
-                "sha256:09c40e2ca864012682843b467157c44454dbe46bcf53951081c87ba2d432aad4",
-                "sha256:2d5a2a22e3dbcf3f79e245193def6bd3039948879bbf75a6203e4d7cf59a2dee"
-            ],
-            "index": "pypi",
-            "version": "==0.6.3.dev20180717"
-        },
         "six": {
             "hashes": [
                 "sha256:70e8a77beed4562e7f14fe23a786b54f6296e34344c23bc42f07b15018ff98e9",
@@ -84,10 +76,9 @@
         },
         "tzlocal": {
             "hashes": [
-                "sha256:27d58a0958dc884d208cdaf45ef5892bf2a57d21d9611f2ac45e51f1973e8cab",
-                "sha256:f124f198e5d86b3538b140883472beaa82d2c0efc0cd9694dfdbe39079e22e69"
+                "sha256:4ebeb848845ac898da6519b9b31879cf13b6626f7184c496037b818e238f2c4e"
             ],
-            "version": "==2.0.0b1"
+            "version": "==1.5.1"
         },
         "ujson": {
             "hashes": [
@@ -134,7 +125,7 @@
                 "sha256:ee55eb6bcf23ecc975e6b47c127c201b913598f38b6a300075f84eeef2d3baff",
                 "sha256:f1414e6cbcea8d22843e7eafdfdfae3dd1aba41d1945f6ca66e4806c07c4f454"
             ],
-            "index": "pypi",
+            "markers": "python_version >= '3.4'",
             "version": "==6.0"
         }
     },

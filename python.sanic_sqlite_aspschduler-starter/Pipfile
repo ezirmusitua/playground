@@ -6,10 +6,8 @@ name = "pypi"
 [packages]
 sanic = "*"
 aiosqlite = "*"
-sanic-cors = "*"
-websockets = "*"
 apscheduler = "*"
-sanic-plugins-framework = "*"
+attrs = "*"
 
 [dev-packages]
 

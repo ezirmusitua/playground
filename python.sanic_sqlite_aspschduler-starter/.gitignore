@@ -177,3 +177,4 @@ venv.bak/
 pyvenv.cfg
 pip-selfcheck.json
 
+data/*.db
