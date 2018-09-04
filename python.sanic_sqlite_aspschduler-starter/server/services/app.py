@@ -1,37 +1,25 @@
 from sanic import Sanic
-from sanic.response import json
-import aiosqlite
 
-import os
+from config import Config
 
-DB_PATH = os.path.join(
-  os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data/test.db')
+LISTENER_EVENTS = [
+  'before_server_start',
+  'after_server_start',
+  'before_server_stop',
+  'after_server_stop'
+]
 
-app = Sanic()
-
-@app.listener('before_server_start')
-async def init_db(app, loop):
-  print('creating db', DB_PATH)
-  async with aiosqlite.connect(DB_PATH) as db:
-    await db.execute('''
-    CREATE TABLE test_table (
-      column1 INTEGER PRIMARY KEY,
-      column2 INTEGER,
-      column3 INTEGER 
-    );
-    ''')
-    await db.commit()
-  # async with db.execute('SELECT * FROM some_table') as cursor:
-  #   async for row in cursor:
-  #     print(row)
-
-@app.route('/')
-async def test(request):
-  return json({'hello': 'world'})
-
-@app.route('/block')
-async def test_blocked(request):
-  return json({'hello': 'blocked world'})
-
-if __name__ == '__main__':
-  app.run(port=8000, debug=True)
+def create_app(middlewares: list, listeners: dict, blueprints: list, env: str):
+  config = Config.get(env)
+  app = Sanic(config['app_name'])
+  app.config.from_object(config)
+  for middleware in middlewares:
+    app.register_middleware(middlewares[0], middleware[1])
+  for event in LISTENER_EVENTS:
+    # NOTE: listener in format (event, event_handlers)
+    for listener in listeners.get(event, []):
+      app.listeners[event].append(listener)
+  for blueprint in blueprints:
+    # NOTE: blueprint in format (blueprint, blueprint options)
+    app.blueprint(blueprint[0], **blueprint[1])
+  return app

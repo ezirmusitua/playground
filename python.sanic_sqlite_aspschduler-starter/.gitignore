@@ -178,3 +178,4 @@ pyvenv.cfg
 pip-selfcheck.json
 
 data/*.db
+data/sql*
