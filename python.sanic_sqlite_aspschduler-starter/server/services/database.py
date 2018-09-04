@@ -1,7 +1,8 @@
+from sqlite3 import OperationalError
+
 import aiosqlite
 import attr
 
-from config import Config
 
 @attr.s
 class Table(object):
@@ -12,7 +13,8 @@ class Table(object):
   indexes = attr.ib(type=dict, factory=dict)
 
   def __attrs_post_init__(self):
-    self.fields = Table.generate_fields_info(self._cls)
+    self.fields, self.foreign, self.indexes = Table.generate_fields_info(
+      self._cls)
 
   @staticmethod
   def generate_fields_info(_cls):
@@ -46,49 +48,54 @@ class TableWrapped(object):
   _database = attr.ib(type=aiosqlite.Connection)
   _table = attr.ib(type=Table)
 
-  async def create_table(self):
+  async def is_table_exists(self):
     statement_check_exists = 'SELECT ' + self._table.table_name + \
                              ' FROM SQLITE_MASTER WHERE TYPE=\'TABLE\' ORDER ' \
                              'BY NAME;'
-    cur = await self._database.execute(statement_check_exists)
-    row = await cur.fetchone()
-    await cur.close()
-    print(row)
-    statement_create = 'CREATE TABLE ' + self._table.table_name + '(\n'
-    for field in self._table.fields:
-      statement_create += field['name'] + ' ' + field['type'] + ' '
-      if field['primary']:
-        statement_create += 'PRIMARY KEY '
-      if field['notnull']:
-        statement_create += 'NOT NULL '
-      if field['unique']:
-        statement_create += 'UNIQUE'
-      statement_create += ',\n'
-    for field, params in self._table.foreign:
-      statement_create += 'FOREIGN KEY (' + field + ') REFERENCES ' + \
-                          params[0] + ' (' + params[1] + '),\n'
-    statement_create = statement_create[:-2] + '\n);'
-    print(statement_create)
-    await self._database.execute(statement_create)
-    for field, index_name in self._table.indexes:
-      await self._database.execute(
-        'CREATE UNIQUE INDEX ' + index_name + ' ON ' + self._table.table_name
-        + '(' + field + ');'
-      )
-    await self._database.commit()
+    async with self._database:
+      try:
+        print(statement_check_exists)
+        cur = await (self._database.execute(statement_check_exists))
+        print('cur', cur)
+        row = await cur.fetchone()
+        print(row)
+        await cur.close()
+        return False
+      except OperationalError as e:
+        return True
+
+  async def create_table(self):
+    if self.is_table_exists(): return
+    async with self._database:
+      statement_create = 'CREATE TABLE ' + self._table.table_name + '(\n'
+      for field in self._table.fields:
+        statement_create += (field['name'] + ' ' + field['type'] + ' ')
+        if field.get('primary'):
+          statement_create += 'PRIMARY KEY '
+        if field.get('notnull'):
+          statement_create += 'NOT NULL '
+        if field.get('unique'):
+          statement_create += 'UNIQUE'
+        statement_create += ',\n'
+      for field, params in self._table.foreign:
+        statement_create += 'FOREIGN KEY (' + field + ') REFERENCES ' + \
+                            params[0] + ' (' + params[1] + '),\n'
+      statement_create = statement_create[:-2] + '\n);'
+      await self._database.execute(statement_create)
+      for field, index_name in self._table.indexes:
+        await self._database.execute(
+          'CREATE UNIQUE INDEX ' + index_name + ' ON ' +
+          self._table.table_name
+          + '(' + field + ');'
+        )
+      await self._database.commit()
+
 
   async def find(self):
     pass
 
 class Database(object):
-  instance = None
   connection = None
-
-  def __new__(cls, db_uri: str):
-    if not Database.instance:
-      Database.instance = object.__new__(cls)
-      Database.instance.connection = aiosqlite.connect(db_uri)
-    return Database.instance
 
   @staticmethod
   async def create_table(model):
@@ -96,3 +103,7 @@ class Database(object):
     table_wrapped = TableWrapped(Database.connection, table)
     # ensure table exists
     await table_wrapped.create_table()
+
+  @staticmethod
+  def connect(db_uri):
+    Database.connection = aiosqlite.connect(db_uri)
