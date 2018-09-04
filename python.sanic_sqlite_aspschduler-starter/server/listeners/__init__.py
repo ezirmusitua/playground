@@ -1,11 +1,24 @@
-from config import Config
-from services.database import Database
-from models.user import _User
+'''
+Should define in format
+{
+  before_server_start= {
 
-async def create_tables(app, loop):
-  Database.connect(Config.db_uri)
-  await Database.create_table(_User)
+    _main: listener,
+
+    <bp_name>: listener,
+
+  }
+
+}
+
+before_server_start is the event name
+
+_main means apply to app
+'''
+from listeners.prepare_database import prepare_database
 
 listeners = dict(
-  before_server_start=[create_tables]
+  before_server_start=dict(
+    _main=[prepare_database]
+  )
 )

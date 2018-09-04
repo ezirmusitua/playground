@@ -4,7 +4,7 @@ from services.database import TableWrapped
 
 @attr.s
 class Model(object):
-  _table = attr.ib(type=TableWrapped)
+  _table: TableWrapped = None
 
   def find(self, query, project):
     return self._table.find(query, project)
