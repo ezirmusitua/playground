@@ -1,7 +1,13 @@
+import click
 from .dispatcher import Dispatcher
 from .utilities import exit
+from .env import set_env, print_env
 
-def start_terminal():
+@click.command()
+@click.option("--project", default='.', help="working directory")
+def start_terminal(project):
+  set_env('project_dir', project)
+  print_env()
   dispatcher = Dispatcher()
   while True:
     try:

@@ -5,14 +5,17 @@ from .eosio import map_to_command
 from .resource import show_resource
 from .utilities import exit
 
-BUILD_IN_VARIABLES = [
-  'net:local',
-  'net:mainnet',
-  'net:cryptokylin',
-  'net:jungle'
-  'resource:keys',
-  'resource:passwords'
-]
+NETWORKS = {
+  'LOCAL'      : 'net:local',
+  'MAINNET'    : 'net:mainnet',
+  'CRYPTOKYLIN': 'net:cryptokylin',
+  'JUNGLE'     : 'net:jungle'
+}
+
+RESOURCES = {
+  'KEY'     : 'resource:keys',
+  'PASSWORD': 'resource:passwords'
+}
 
 COMMANDS = {
   'install_wsl'    : install_wsl,
@@ -41,4 +44,6 @@ COMMANDS = {
   'eosio-wast2wasm': map_to_command('eosio-wast2wasm'),
 }
 
-COMPLETER = WordCompleter(list(COMMANDS.keys()) + BUILD_IN_VARIABLES)
+COMPLETER = WordCompleter(
+  list(COMMANDS.keys()) + list(NETWORKS.values()) + list(RESOURCES.values())
+)
