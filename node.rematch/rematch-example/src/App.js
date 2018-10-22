@@ -1,7 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, Provider } from 'react-redux';
+import store from './store/index';
 
-const Count = props => (
+const mapState = state => ({count: state.count});
+
+const mapDispatch = ({count: {increment, incrementAsync}}) => ({
+  increment: () => increment(1),
+  incrementAsync: () => incrementAsync(1)
+});
+
+
+const Count = connect(mapState, mapDispatch)(props => (
   <div style={{
     height: '100vh',
     width: '100vw',
@@ -42,15 +51,12 @@ const Count = props => (
       }} onClick={props.incrementAsync}>incrementAsync
       </button>
     </div>
-  </div>
+  </div>)
 );
 
-const mapState = state => ({count: state.count});
 
-const mapDispatch = ({count: {increment, incrementAsync}}) => ({
-  increment: () => increment(1),
-  incrementAsync: () => incrementAsync(1)
-});
+export default props => (<Provider store={store}>
+  <Count/>
+</Provider>);
 
-export default connect(mapState, mapDispatch)(Count);
 
