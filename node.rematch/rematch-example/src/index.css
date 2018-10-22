@@ -1,14 +1,78 @@
+/* variables */
+:root {
+  --color-text-primary: rgba(0, 2, 4, .8);
+  --color-text-secondary: rgba(0, 2, 4, .5);
+  --color-bg: rgba(10, 180, 233, 0.5);
+  --shadow: 0px 4px 8px 2px rgba(233, 233, 233, .8);
+}
+
+/* global elements */
 body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /*background-color: var(--color-bg);*/
+  height: 100vh;
+}
+
+div, section, article {
+  box-sizing: border-box;
+}
+
+p, h1, h2, h3, h4 {
+  margin: 0;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  monospace;
+}
+
+#root {
+  height: 100%;
+}
+
+/* TodoItem */
+.todo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 40px;
+  margin: 8px 0;
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+}
+
+/* TodoList */
+.todos {
+  flex-basis: 66%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 32px;
+}
+
+/* UserInfo */
+.user-info {
+  flex-basis: 33%;
+  padding: 40px 32px;
+  margin-left: 24px;
+  border-left: 1px dotted grey;
+}
+
+.user-info .name {
+  text-align: start;
+  font-size: 20px;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+
+.user-info .todo-count, .user-info .score {
+  text-align: start;
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
 }
