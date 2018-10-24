@@ -1,5 +1,6 @@
+export const TODO_MODEL = 'todos';
 export const todos = {
-  name: 'todos',
+  name: TODO_MODEL,
   state: {
     items: {},
     itemIds: [],

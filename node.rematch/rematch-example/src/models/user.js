@@ -1,5 +1,6 @@
+export const USER_MODEL = 'user';
 export const user = {
-  name: 'user',
+  name: USER_MODEL,
   state: {
     name: 'DemoUser',
     todoCount: 0,

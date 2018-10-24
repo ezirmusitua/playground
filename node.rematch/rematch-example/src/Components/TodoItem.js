@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
 class TodoItem extends Component {
   render() {
     const {props: {todo: {id, content}, markDone}} = this;
@@ -15,7 +14,9 @@ class TodoItem extends Component {
   }
 }
 
-const mapState = () => ({});
+const mapState = (state) => {
+  return {removing: state.loading.effects.todos.removeTodo};
+};
 const mapDispatch = ({todos: {markDone}, user: {updateTodoCount, updateScore}}) => ({
   async markDone({id}) {
     await markDone({id});
