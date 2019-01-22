@@ -33,25 +33,25 @@ im5 = Image.fromarray(im5_array)
 # pylab.show()
 
 image_filenames = [r'examples/Rak/2B_1_(' + str(i) + ').jpg' for i in
-                   range(1, 5)]
+                   range(1, 10)]
 
 im6_array = imtools.compute_average(image_filenames)
 # im6 = Image.fromarray(im6_array)
 # im6.show()
 
 im_tmp = np.array(Image.open(image_filenames[0]))
-m, n = im.shape[:2]
+m, n = im_tmp.shape[:2]
 imnbr = len(image_filenames)
 immatrix = np.array(
-  [np.array(Image.open(filename).resize((20, 25))).flatten() for filename in image_filenames],
+  [np.array(Image.open(filename).convert('L')).flatten() for filename in image_filenames],
   'f')
 V, S, immean = imtools.pca(immatrix)
 pylab.figure()
 pylab.gray()
-pylab.subplot(2, 2, 1)
+pylab.subplot(2, 6, 1)
 pylab.imshow(immean.reshape(m, n))
-for i in range(0, 4):
-  pylab.subplot(2, 2, i + 2)
+for i in range(9):
+  pylab.subplot(2, 6, i + 2)
   pylab.imshow(V[i].reshape(m, n))
 
 pylab.show()
