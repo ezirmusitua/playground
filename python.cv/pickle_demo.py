@@ -1,8 +1,8 @@
 import pickle
-import imtools
 import numpy as np
 import pylab
 from PIL import Image
+import imtools
 
 image_filenames = [r'examples/Rak/2B_1_(' + str(i) + ').jpg' for i in
                    range(1, 10)]

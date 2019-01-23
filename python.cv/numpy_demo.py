@@ -43,7 +43,8 @@ im_tmp = np.array(Image.open(image_filenames[0]))
 m, n = im_tmp.shape[:2]
 imnbr = len(image_filenames)
 immatrix = np.array(
-  [np.array(Image.open(filename).convert('L')).flatten() for filename in image_filenames],
+  [np.array(Image.open(filename).convert('L')).flatten() for filename in
+   image_filenames],
   'f')
 V, S, immean = imtools.pca(immatrix)
 pylab.figure()

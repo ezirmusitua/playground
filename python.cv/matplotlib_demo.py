@@ -1,10 +1,14 @@
-from numpy import array
-from pylab import imshow, plot, title, show, figure, gray, contour, axis, hist, ginput
+import numpy as np
+from pylab import (
+  imshow, plot, title, show, figure, gray, contour, axis,
+  hist,
+  ginput,
+)
 from PIL import Image
 
 image = Image.open(r'examples/Rak/1.png')
 
-im = array(image)
+im = np.array(image)
 
 imshow(im)
 x = [100, 100, 400, 400]
@@ -19,9 +23,9 @@ show()
 figure()
 gray()
 grey_im = image.copy().convert('L')
-contour(array(grey_im), origin='image')
+contour(np.array(grey_im), origin='image')
 axis('equal')
 axis('off')
 figure()
-hist(array(grey_im).flatten(), 128)
+hist(np.array(grey_im).flatten(), 128)
 show()
