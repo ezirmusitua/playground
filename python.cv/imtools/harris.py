@@ -2,7 +2,7 @@ import numpy as np
 import pylab
 from scipy import ndimage
 
-def compute_harris_response(img, sigma=3):
+def compute_response(img, sigma=3):
   im = np.array(img.convert('L'))
   imx = np.zeros(im.shape)
   ndimage.gaussian_filter(im, (sigma, sigma), (0, 1), imx)
@@ -15,7 +15,7 @@ def compute_harris_response(img, sigma=3):
   wtr = wxx + wyy
   return np.nan_to_num(wdet / wtr)
 
-def get_harris_points(harrisim, min_dist=10, threshold=0.1):
+def get_points(harrisim, min_dist=10, threshold=0.1):
   corner_threshold = harrisim.max() * threshold
   harrisim_t = (harrisim > corner_threshold) * 1
   coords = np.array(harrisim_t.nonzero()).T
@@ -31,7 +31,7 @@ def get_harris_points(harrisim, min_dist=10, threshold=0.1):
       (coords[i, 1] - min_dist):(coords[i, 0] + min_dist)] = 0
   return filtered_coords
 
-def plot_harris_points(image, filtered_coords):
+def plot_points(image, filtered_coords):
   pylab.figure()
   pylab.gray()
   pylab.imshow(np.array(image.convert('L')))
@@ -40,7 +40,7 @@ def plot_harris_points(image, filtered_coords):
   pylab.axis('off')
   pylab.show()
 
-def get_harris_descriptor(image, filtered_coords, wid=5):
+def get_descriptor(image, filtered_coords, wid=5):
   im = np.array(image.convert('L'))
   desc = []
   for coords in filtered_coords:
@@ -49,7 +49,7 @@ def get_harris_descriptor(image, filtered_coords, wid=5):
     desc.append(patch)
   return desc
 
-def match_harris_descriptor(desc1, desc2, threshold=0.5):
+def match_descriptor(desc1, desc2, threshold=0.5):
   n = len(desc1[0])
   d = -np.ones((len(desc1), len(desc2)))
   counter = 1
@@ -65,9 +65,9 @@ def match_harris_descriptor(desc1, desc2, threshold=0.5):
   ndx = np.argsort(-d)
   return ndx[:, 0]
 
-def match_harris_descriptor_twosided(desc1, desc2, threshold=0.5):
-  matches_12 = match_harris_descriptor(desc1, desc2, threshold)
-  matches_21 = match_harris_descriptor(desc2, desc1, threshold)
+def match_descriptor_twosided(desc1, desc2, threshold=0.5):
+  matches_12 = match_descriptor(desc1, desc2, threshold)
+  matches_21 = match_descriptor(desc2, desc1, threshold)
   ndx_12 = np.where(matches_12 >= 0)[0]
   for n in ndx_12:
     if matches_21[matches_12[n]] != n:
@@ -87,7 +87,7 @@ def append_images(img1, img2):
 
   return np.concatenate((im1, im2), axis=1)
 
-def plot_harris_matches(img1, img2, locs1, locs2, matchscores, show_below=True):
+def plot_matches(img1, img2, locs1, locs2, matchscores, show_below=True):
   im1 = np.array(img1.convert('L'))
   im3 = append_images(img1, img2)
   if show_below:
