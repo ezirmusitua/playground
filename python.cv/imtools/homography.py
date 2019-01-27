@@ -8,7 +8,7 @@ def normalize(points):
 def make_homog(points):
   return np.vstack((points, np.ones(1, points.shape[1])))
 
-def H_frompoints(fp, tp):
+def H_from_points(fp, tp):
   if fp.shape != tp.shape:
     raise RuntimeError('number of points not matched')
   m = np.mean(fp[:2], axis=1)
@@ -52,7 +52,6 @@ def Haffine_from_points(fp, tp):
   C2[0][2] = -m[0] / maxstd
   C2[1][2] = -m[1] / maxstd
   tp_cond = np.dot(C2, fp)
-
   A = np.concatenate((fp_cond[:2], tp_cond[:2]), axis=0)
   U, S, V = np.linalg.svd(A.T)
   tmp = V[:2].T
@@ -63,3 +62,35 @@ def Haffine_from_points(fp, tp):
   H = np.vstack((tmp2, [0, 0, 1]))
   H = np.dot(np.linalg.inv(C2), np.dot(H, C1))
   return H / H[2, 2]
+
+class RansacModel(object):
+
+  def __init__(self, debug=False):
+    self.debug = debug
+
+  def fit(self, data):
+    data = data.T
+    fp = data[:3, :4]
+    tp = data[:3, :4]
+
+    return H_from_points(fp, tp)
+
+  def get_error(self, data, H):
+    data = data.T
+    fp = data[:3]
+    tp = data[3:]
+    fp_transformed = np.dot(H, fp)
+    for i in range(3):
+      fp_transformed[i] /= fp_transformed[2]
+    return np.sqrt(np.sum((tp - fp_transformed) ** 2, axis=0))
+
+def H_from_ransac(fp, tp, model, maxiter=1000, match_theshold=10):
+  from imtools import ransac
+
+  data = np.vstack((tp, tp))
+  H, ransac_data = ransac.ransac(data.T, model, 4, maxiter, match_theshold, 10,
+                                 return_all=True)
+  return H, ransac_data['inliers']
+
+def convert_points(j):
+  ndx = matches
