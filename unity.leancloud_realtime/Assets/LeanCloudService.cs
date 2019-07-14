@@ -15,10 +15,9 @@ public class LeanCloudService : MonoBehaviour {
   private static LeanCloudService instance;
   private AVRealtime realtime;
   private AVIMClient client;
-  private Dictionary<string, List<AVIMTextMessage>> convMessages = new Dictionary<string, List<AVIMTextMessage>>();
+  private readonly Dictionary<string, List<AVIMTextMessage>> _convMessages = new Dictionary<string, List<AVIMTextMessage>>();
 
   public static LeanCloudService Instance => instance;
-  public string ClientId => clientId;
 
   void Start() {
     // Singleton
@@ -43,11 +42,12 @@ public class LeanCloudService : MonoBehaviour {
   }
 
   public List<AVIMTextMessage> GetMessages(AVIMConversation conv) {
-    if (!convMessages.ContainsKey(conv.CurrentClient.ClientId)) return new List<AVIMTextMessage>();
-    return convMessages[conv.CurrentClient.ClientId];
+    Debug.Log("Contains Key: " + _convMessages.ContainsKey(conv.ConversationId) + " " + conv.ConversationId);
+    if (!_convMessages.ContainsKey(conv.ConversationId)) return new List<AVIMTextMessage>();
+    return _convMessages[conv.ConversationId];
   }
 
-  public async Task<AVIMConversation> CreateConversation(List<string> members, string cname, bool isUnique) {
+  public async Task<AVIMConversation> CreateConversation(List<string> members, string cname, bool isUnique = true) {
     return await client.CreateConversationAsync(
       members: members,
       name: cname,
@@ -58,6 +58,11 @@ public class LeanCloudService : MonoBehaviour {
   public async Task SendMessage(AVIMConversation conv, string content) {
     var message = new AVIMTextMessage(content);
     await conv.SendMessageAsync(message);
+    if (!_convMessages.ContainsKey(conv.ConversationId)) {
+      _convMessages[conv.ConversationId] = new List<AVIMTextMessage>();
+    }
+
+    _convMessages[conv.ConversationId].Add(message);
   }
 
   private void OnMessageReceived(object sender, AVIMMessageEventArgs e) {
@@ -65,16 +70,15 @@ public class LeanCloudService : MonoBehaviour {
     if (e.Message is AVIMTextMessage) {
       // 目前只考虑 Text 类型的消息
       var textMessage = (AVIMTextMessage) e.Message;
-      Debug.Log(textMessage.Content);
+
       // 将各个 Conversation 的消息分别存储
-      if (!convMessages.ContainsKey(textMessage.ConversationId)) {
-        convMessages[textMessage.ConversationId] = new List<AVIMTextMessage>();
+      Debug.Log(textMessage.TextContent);
+      if (!_convMessages.ContainsKey(textMessage.ConversationId)) {
+        _convMessages[textMessage.ConversationId] = new List<AVIMTextMessage>();
       }
 
-      convMessages[textMessage.ConversationId].Add(textMessage);
+      _convMessages[textMessage.ConversationId].Add(textMessage);
+      Debug.Log("Conversation " + textMessage.ConversationId + " Receive New Message " + textMessage.Content + " total count: " + _convMessages[textMessage.ConversationId].Count);
     }
-  }
-
-  public async void ListMessages() {
   }
 }
