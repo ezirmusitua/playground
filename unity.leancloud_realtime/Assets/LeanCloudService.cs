@@ -42,7 +42,6 @@ public class LeanCloudService : MonoBehaviour {
   }
 
   public List<AVIMTextMessage> GetMessages(AVIMConversation conv) {
-    Debug.Log("Contains Key: " + _convMessages.ContainsKey(conv.ConversationId) + " " + conv.ConversationId);
     if (!_convMessages.ContainsKey(conv.ConversationId)) return new List<AVIMTextMessage>();
     return _convMessages[conv.ConversationId];
   }
@@ -72,13 +71,11 @@ public class LeanCloudService : MonoBehaviour {
       var textMessage = (AVIMTextMessage) e.Message;
 
       // 将各个 Conversation 的消息分别存储
-      Debug.Log(textMessage.TextContent);
       if (!_convMessages.ContainsKey(textMessage.ConversationId)) {
         _convMessages[textMessage.ConversationId] = new List<AVIMTextMessage>();
       }
 
       _convMessages[textMessage.ConversationId].Add(textMessage);
-      Debug.Log("Conversation " + textMessage.ConversationId + " Receive New Message " + textMessage.Content + " total count: " + _convMessages[textMessage.ConversationId].Count);
     }
   }
 }
