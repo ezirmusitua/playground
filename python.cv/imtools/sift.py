@@ -40,26 +40,23 @@ def plot_features(img, locs, circle=False):
 
 def match_descriptor(desc1, desc2):
   desc1 = np.array([d / np.linalg.norm(d) for d in desc1])
-  print(desc1[0][0], desc2[0][0])
   desc2 = np.array([d / np.linalg.norm(d) for d in desc2])
   dist_ratio = 0.99
   desc1_size = desc1.shape
   matchscores = np.zeros(desc1_size[0], 'int')
-  print('init match scores: ', matchscores)
   desc2t = desc2.T
   for i in range(desc1_size[0]):
     dotprods = np.dot(desc1[i, :], desc2t)
     dotprods = 0.9999 * dotprods
     indx = np.argsort(np.arccos(dotprods))
-    print('indx: ', indx)
     if np.arccos(dotprods)[indx[0]] < dist_ratio * np.arccos(dotprods)[indx[1]]:
-      print('selected indx: ', indx[0])
       matchscores[i] = int(indx[0])
   return matchscores
 
 def match_descriptor_twosided(desc1, desc2):
   matches_12 = match_descriptor(desc1, desc2)
   matches_21 = match_descriptor(desc2, desc1)
+  print(matches_12, matches_21)
   ndx_12 = matches_12.nonzero()[0]
   for n in ndx_12:
     if matches_21[int(matches_12[n])] != n:
