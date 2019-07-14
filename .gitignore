@@ -210,9 +210,3 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-
-
-
-unity.leancloud_realtime/Assets/
-unity.leancloud_realtime/Packages/
-unity.leancloud_realtime/ProjectSettings/
