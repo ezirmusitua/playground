@@ -1736,9 +1736,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec538296bc38004d813964ab947e641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  appId: 
-  appKey: 
-  clientId: 
+  appId: SmzfnAMKKetFfNodN8v1dCkc-gzGzoHsz
+  appKey: xqDQnESWKl58CXOhmgsOTeqX
+  clientId: LCRealTimeDemo
 --- !u!4 &1817993239
 Transform:
   m_ObjectHideFlags: 0
