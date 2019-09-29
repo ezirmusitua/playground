@@ -1,0 +1,12 @@
+{
+  "name": "mongodb-transaction",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "mongodb-memory-server": "^5.2.3",
+    "mongoose": "^5.7.1"
+  },
+  "devDependencies": {
+  }
+}
