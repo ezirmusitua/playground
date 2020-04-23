@@ -1,0 +1,132 @@
+<html>
+
+<head>
+    <script type="text/javascript">
+        function failAndLog(err) {
+            console.log(err);
+        }
+        function unicodeToUint16Array(str) {
+            const chars = [];
+            console.log(str.length);
+            for (let i = 0; i < str.length; ++i) {
+                console.log(str.charCodeAt(i))
+                chars.push(str.charCodeAt(i));
+            }
+            return new Uint16Array(chars);
+        }
+        function uint16ArrayToUnicode(array) {
+            const uint8Array = new Uint16Array(array);
+            console.log("bytes to ascii string: ", uint8Array, uint8Array[0]);
+            let result = "";
+            for (let i = 0; i < uint8Array.byteLength; i++) {
+                result += String.fromCharCode(uint8Array[i]);
+            }
+            return result;
+        }
+        function hexStringToUint8Array(hexString) {
+            if (hexString.length % 2 != 0)
+                throw "Invalid hexString";
+            const arrayBuffer = new Uint8Array(hexString.length / 2);
+            for (let i = 0; i < hexString.length; i += 2) {
+                const byteValue = parseInt(hexString.substr(i, 2), 16);
+                if (byteValue == NaN)
+                    throw "Invalid hexString";
+                arrayBuffer[i / 2] = byteValue;
+            }
+            return arrayBuffer;
+        }
+
+        function bytesToHexString(bytes) {
+            if (!bytes)
+                return null;
+            bytes = new Uint8Array(bytes);
+            const hexBytes = [];
+            for (let i = 0; i < bytes.length; ++i) {
+                let byteString = bytes[i].toString(16);
+                if (byteString.length < 2)
+                    byteString = "0" + byteString;
+                hexBytes.push(byteString);
+            }
+            return hexBytes.join("");
+        }
+        const keyData = hexStringToUint8Array("5e5942743a544f1d23f276ebc62352cb");
+        const iv = hexStringToUint8Array('465b9a9c65fadc5ad5c6da9cda2db0a6');
+
+        function AES_CTR_encrypt() {
+            crypto.subtle.importKey("raw", keyData, "aes-ctr", false, ["encrypt"]).then((key) => {
+                const plainText = document.getElementById("plainTextGCM").value;
+                return crypto.subtle.encrypt({ name: "aes-ctr", counter: iv, length: 128 }, key, unicodeToUint16Array(plainText));
+            }, failAndLog).then((cipherText) => {
+                document.getElementById("cipherTextGCM").value = bytesToHexString(cipherText);
+            }, failAndLog);
+        }
+
+        function AES_GCM_encrypt() {
+            crypto.subtle.importKey("raw", keyData, "aes-gcm", false, ["encrypt"]).then((key) => {
+                const plainText = document.getElementById("plainTextGCM").value;
+                return crypto.subtle.encrypt({ name: "aes-gcm", iv: iv }, key, unicodeToUint16Array(plainText));
+            }, failAndLog).then((cipherText) => {
+                document.getElementById("cipherTextGCM").value = bytesToHexString(cipherText);
+            }, failAndLog);
+        }
+        function AES_GCM_decrypt() {
+            crypto.subtle.importKey("raw", keyData, "aes-gcm", false, ["decrypt"]).then((key) => {
+                const cipherText = document.getElementById("cipherTextGCM").value;
+                return crypto.subtle.decrypt({ name: "aes-gcm", iv: iv }, key, hexStringToUint8Array(cipherText));
+            }, failAndLog).then((plainText) => {
+                document.getElementById("resultGCM").innerHTML = "Result: " + uint16ArrayToUnicode(plainText);
+            }, (result) => {
+                document.getElementById("resultGCM").innerHTML = "Result: " + result;
+            });
+        }
+        function AES_CBC_encrypt() {
+            crypto.subtle.importKey("raw", keyData, "aes-cbc", false, ["encrypt"]).then((key) => {
+                const plainText = document.getElementById("plainTextGCM").value;
+                return crypto.subtle.encrypt({ name: "aes-cbc", iv: iv }, key, unicodeToUint16Array(plainText));
+            }, failAndLog).then((cipherText) => {
+                document.getElementById("cipherTextGCM").value = bytesToHexString(cipherText);
+            }, failAndLog);
+        }
+
+        function AES_CTR_decrypt() {
+            crypto.subtle.importKey("raw", keyData, "aes-ctr", false, ["decrypt"]).then((key) => {
+                const cipherText = document.getElementById("cipherTextGCM").value;
+                return crypto.subtle.decrypt({ name: "aes-ctr", counter: iv, length: 128 }, key, hexStringToUint8Array(cipherText));
+            }, failAndLog).then((plainText) => {
+                document.getElementById("resultGCM").innerHTML = "Result: " + uint16ArrayToUnicode(plainText);
+            }, (result) => {
+                document.getElementById("resultGCM").innerHTML = "Result: " + result;
+            });
+        }
+
+        function AES_CBC_decrypt() {
+            crypto.subtle.importKey("raw", keyData, "aes-cbc", false, ["decrypt"]).then((key) => {
+                const cipherText = document.getElementById("cipherTextGCM").value;
+                return crypto.subtle.decrypt({ name: "aes-cbc", iv: iv }, key, hexStringToUint8Array(cipherText));
+            }, failAndLog).then((plainText) => {
+                document.getElementById("resultGCM").innerHTML = "Result: " + uint16ArrayToUnicode(plainText);
+            }, failAndLog);
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        Plain Text: <input type="text" id="plainTextGCM" value="This is the secret i want to encrypt">
+        <button type="button" onclick="AES_GCM_encrypt()">encryptGCM</button>
+        <button type="button" onclick="AES_CBC_encrypt()">encryptCBC</button>
+        <button type="button" onclick="AES_CTR_encrypt()">encryptCTR</button>
+    </div>
+    <div>
+        Cipher Text: <input type="text" id="cipherTextGCM" size="50">
+        <button type="button" onclick="AES_GCM_decrypt()">decryptGCM</button>
+        <button type="button" onclick="AES_CTR_decrypt()">decryptCTR</button>
+    </div>
+
+    <div id="resultGCM">
+        Result:
+    </div>
+
+</body>
+
+</html>
