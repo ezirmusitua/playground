@@ -1,0 +1,1 @@
+void source2_func();
