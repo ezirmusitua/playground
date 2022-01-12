@@ -36,6 +36,6 @@
   },
   "dependencies": {
     "github-markdown-css": "^2.10.0",
-    "markdown-it": "^8.4.1"
+    "markdown-it": "^12.3.2"
   }
 }
